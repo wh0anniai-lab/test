@@ -49,9 +49,11 @@ export function About() {
                 </div>
 
                 {/* 실제 프로필 사진으로 교체하려면 아래 div를 <img src="/images/profile.jpg" ... /> 로 바꾸세요 */}
-                <div className="mt-8 aspect-[4/3] w-full rounded-md bg-gradient-to-br from-signal/15 to-[#7B61FF]/15 border border-hairline flex items-center justify-center">
+                {/* <div className="mt-8 aspect-[4/3] w-full rounded-md bg-gradient-to-br from-signal/15 to-[#7B61FF]/15 border border-hairline flex items-center justify-center">
                   <span className="text-steel text-sm">프로필 사진 영역</span>
-                </div>
+                </div> */}
+                <img src="/images/profile.jpg" 
+                />
               </CardContent>
             </Card>
           </div>
