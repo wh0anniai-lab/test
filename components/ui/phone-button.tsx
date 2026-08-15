@@ -20,8 +20,8 @@ export function PhoneButton({ variant = "icon", className }: Props) {
       aria-label="전화하기"
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-full",
-        "border border-cyan/30 bg-cyan/10 text-cyan",
-        "transition-colors duration-200 hover:bg-cyan/20 active:bg-cyan/25",
+        "border border-[#fc4040]/30 bg-[#fc4040]/10 text-[#fc4040]",
+        "transition-colors duration-200 hover:bg-cy[#fc4040]an/20 active:bg-[#fc4040]/25",
         variant === "icon" ? "h-11 w-11" : "h-11 px-5 text-[14px] font-semibold",
         className
       )}

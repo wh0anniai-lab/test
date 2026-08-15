@@ -69,14 +69,14 @@ export function Contact() {
             data-reveal-delay="80"
             className="reveal mt-5 text-display font-semibold text-white"
           >
-            아이디어가 있다면,
+            아이디어를,
             <br />
             {/* 그라디언트가 한 줄을 온전히 덮도록 줄바꿈을 고정한다 */}
             <span className="bg-gradient-to-r from-cyan to-purple bg-clip-text text-transparent">
-              실제로 작동하는 것으로
+              세상에 태어나게 하는데
             </span>
             <br />
-            만들어봅시다.
+            함께 하겠습니다.
           </h2>
 
           <p

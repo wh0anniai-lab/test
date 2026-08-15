@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import { SITE } from "@/lib/data/site";
+import { Phone } from "lucide-react";
 
 const KEYWORDS = ["AI Systems", "Product", "Robotics"];
 
@@ -57,8 +58,9 @@ export function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl text-[15px] leading-[1.7] text-steel md:mt-7 md:text-[18px]">
-            Robotics에서 AI Systems까지, 연구·개발·창업을 연결해 배움을 세상과
-            공유하고 있습니다.
+            Robotics에서 AI Systems까지, 연구·개발·창업을 연결해
+            <br /> 
+            배움을 세상과 공유하고 있습니다.
           </p>
 
           {/* WHAT TO SEE */}
@@ -84,8 +86,9 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-hairline px-7 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-panel active:bg-panel-soft sm:w-auto"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-purple px-7 text-[15px] font-semibold text-navy shadow-glow transition-transform duration-200 hover:bg-panel active:bg-panel-soft sm:w-auto"
             >
+              <Phone size={17} aria-hidden />
               연락하기
             </a>
           </div>
