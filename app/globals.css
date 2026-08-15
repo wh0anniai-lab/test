@@ -1,71 +1,100 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-hairline;
-  }
-
   html {
     scroll-behavior: smooth;
+    /* 모바일 주소창 색상까지 배경과 맞춘다 */
+    background-color: #07111f;
+    -webkit-text-size-adjust: 100%;
   }
 
+  /*
+   * 가로 넘침은 glow/blur 요소를 감싸는 컨테이너의 overflow-hidden 으로 막는다.
+   * body 에 overflow-x 를 걸면 body 가 스크롤 컨테이너가 되어
+   * window.scroll / position:sticky 동작이 깨지므로 사용하지 않는다.
+   */
   body {
-    @apply bg-paper text-ink antialiased;
+    @apply bg-navy text-ink antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: #0071e3;
+    background-color: rgba(36, 214, 255, 0.28);
     color: #ffffff;
   }
 
-  /* 가독성을 위한 키보드 포커스 표시 */
   :focus-visible {
-    outline: 2px solid #0071e3;
+    outline: 2px solid #24d6ff;
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+  /* 터치 하이라이트 제거 (커스텀 press 상태를 사용) */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  /* 섹션 라벨: 01 SELECTED WORK 형태의 eyebrow */
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan md:text-[12px];
+  }
+
+  /* 카드 기본 표면 — 과한 glassmorphism 대신 미세한 inner highlight */
+  .surface {
+    @apply rounded-lg border border-hairline bg-panel shadow-panel;
   }
 }
 
 @layer utilities {
+  /* IntersectionObserver 로 .is-visible 이 붙으면 나타난다 */
   .reveal {
     opacity: 0;
   }
   .reveal.is-visible {
-    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* 스크롤 앵커가 sticky 헤더에 가리지 않도록 */
+  .scroll-anchor {
+    scroll-margin-top: 5rem;
   }
 }
 
-/*
- * 이 키프레임은 Tailwind content 스캔 대상 클래스(`animate-fade-up`)를
- * 코드에서 직접 쓰지 않기 때문에, tailwind.config의 keyframes 설정만으로는
- * 빌드 결과물에 포함되지 않습니다. 그래서 순수 CSS로 직접 선언해
- * 항상 생성되도록 보장합니다.
- */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*
+ * 모션 최소화 설정을 존중한다.
+ * reveal 은 애니메이션 대신 즉시 표시되어야 콘텐츠가 사라지지 않는다.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
   }
 }

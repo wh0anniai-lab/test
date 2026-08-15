@@ -1,55 +1,47 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Design tokens — Deep Navy 기반 다크 UI.
+ * 페이지의 80~90%는 navy/panel/text 로 구성하고
+ * cyan / purple 은 CTA · glow · 강조에만 제한적으로 사용한다.
+ */
 const config: Config = {
-  darkMode: ["class"],
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1.25rem",
+        md: "2rem",
+      },
       screens: {
         "2xl": "1200px",
       },
     },
     extend: {
       colors: {
-        // Apple.com 참조 팔레트
-        paper: "#FFFFFF",
-        mist: "#F5F5F7",
-        ink: "#1D1D1F",
-        steel: "#86868B",
-        hairline: "#D2D2D7",
+        navy: {
+          DEFAULT: "#07111F", // background
+          deep: "#050C17", // footer / 더 어두운 층
+        },
+        panel: {
+          DEFAULT: "#0B1E33", // card surface
+          soft: "#0E2540", // hover / raised
+        },
+        cyan: {
+          DEFAULT: "#24D6FF",
+          soft: "#7FE7FF",
+        },
+        purple: {
+          DEFAULT: "#8B5CF6",
+        },
+        ink: "#D8E1EA", // text primary
+        steel: "#AAB7C4", // text secondary
+        hairline: "rgba(216, 225, 234, 0.10)",
         signal: {
-          DEFAULT: "#0071E3",
-          dark: "#0058B0",
-        },
-        border: "#D2D2D7",
-        input: "#D2D2D7",
-        ring: "#0071E3",
-        background: "#FFFFFF",
-        foreground: "#1D1D1F",
-        primary: {
-          DEFAULT: "#1D1D1F",
-          foreground: "#FFFFFF",
-        },
-        secondary: {
-          DEFAULT: "#F5F5F7",
-          foreground: "#1D1D1F",
-        },
-        muted: {
-          DEFAULT: "#F5F5F7",
-          foreground: "#86868B",
-        },
-        accent: {
-          DEFAULT: "#0071E3",
-          foreground: "#FFFFFF",
-        },
-        card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#1D1D1F",
+          green: "#3DFFB5",
+          amber: "#FFB020",
+          red: "#FF5C7A",
         },
       },
       fontFamily: {
@@ -58,41 +50,49 @@ const config: Config = {
           "Pretendard",
           "-apple-system",
           "BlinkMacSystemFont",
-          "SF Pro Display",
           "system-ui",
           "sans-serif",
         ],
       },
       fontSize: {
-        "hero-sm": ["44px", { lineHeight: "1.07", letterSpacing: "-0.02em" }],
-        "hero-lg": ["88px", { lineHeight: "1.05", letterSpacing: "-0.025em" }],
+        /*
+         * Mobile-first 타이포 스케일.
+         * 한글은 글자당 약 1em 폭을 차지하므로, 390px(콘텐츠 폭 350px)에서
+         * 가장 긴 줄이 넘치지 않는 vw 값을 상한으로 잡았다.
+         * 크기만 줄이지 않고 각 헤드라인의 줄바꿈도 함께 최적화한다.
+         */
+        hero: ["clamp(2rem, 9.2vw, 2.75rem)", { lineHeight: "1.12", letterSpacing: "-0.03em" }],
+        "hero-lg": ["clamp(3.25rem, 5.6vw, 5rem)", { lineHeight: "1.06", letterSpacing: "-0.035em" }],
+        display: ["clamp(1.75rem, 7.2vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em" }],
+        section: ["clamp(1.6rem, 6.2vw, 2.25rem)", { lineHeight: "1.18", letterSpacing: "-0.02em" }],
       },
       borderRadius: {
-        lg: "18px",
-        md: "14px",
+        xl: "24px",
+        lg: "20px",
+        md: "16px",
         sm: "10px",
+      },
+      boxShadow: {
+        panel: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 12px 32px -16px rgba(0,0,0,0.7)",
+        glow: "0 0 0 1px rgba(36,214,255,0.25), 0 8px 40px -12px rgba(36,214,255,0.35)",
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "fade-in": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        "drift": {
-          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-          "50%": { transform: "translate(30px, -20px) scale(1.05)" },
+        drift: {
+          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
+          "50%": { transform: "translate3d(0,-16px,0) scale(1.06)" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "fade-in": "fade-in 1s ease forwards",
-        "drift": "drift 12s ease-in-out infinite",
+        "fade-up": "fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards",
+        drift: "drift 14s ease-in-out infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };
+
 export default config;

@@ -1,25 +1,33 @@
-import { Navbar } from "@/components/sections/navbar";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
-import { Overview } from "@/components/sections/overview";
-import { About } from "@/components/sections/about";
+import { SelectedWork } from "@/components/sections/selected-work";
+import { Capabilities } from "@/components/sections/capabilities";
+import { Now } from "@/components/sections/now";
+import { Story } from "@/components/sections/story";
 import { Career } from "@/components/sections/career";
-import { Projects } from "@/components/sections/projects";
-import { Startup } from "@/components/sections/startup";
+import { EngineeringArchive } from "@/components/sections/engineering-archive";
+import { Lecture } from "@/components/sections/lecture";
+import { TechStack } from "@/components/sections/tech-stack";
 import { Contact } from "@/components/sections/contact";
-import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-paper">
-      <Navbar />
-      <Hero />
-      <Overview />
-      <About />
-      <Career />
-      <Projects />
-      <Startup />
-      <Contact />
+    <>
+      <Header />
+      <main className="bg-navy">
+        <Hero />
+        <SelectedWork />
+        <Capabilities />
+        <Now />
+        <Story />
+        <Career />
+        <EngineeringArchive />
+        <Lecture />
+        <TechStack />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
