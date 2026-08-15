@@ -1,15 +1,29 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Mail, Phone, MapPin, Code2, ArrowRight } from "lucide-react";
+import { Mail, Phone, MessageCircle, ArrowRight, type LucideIcon } from "lucide-react";
 import { CONTACT } from "@/lib/data/site";
 import { useReveal } from "@/hooks/use-reveal";
 
-const CHANNELS = [
-  { label: "이메일", value: CONTACT.email, href: `mailto:${CONTACT.email}`, icon: Mail },
+type Channel = {
+  label: string;
+  value: string;
+  href: string;
+  icon: LucideIcon;
+  /** 외부 사이트로 나가는 링크인지 */
+  external?: boolean;
+};
+
+const CHANNELS: Channel[] = [
   { label: "전화", value: CONTACT.phoneDisplay, href: CONTACT.phoneHref, icon: Phone },
-  { label: "위치", value: CONTACT.location, href: undefined, icon: MapPin },
-  { label: "전문 분야", value: CONTACT.expertise, href: undefined, icon: Code2 },
+  {
+    label: "오픈카톡",
+    value: "오픈채팅방으로 바로 연결",
+    href: CONTACT.kakaoOpenChat,
+    icon: MessageCircle,
+    external: true,
+  },
+  { label: "이메일", value: CONTACT.email, href: `mailto:${CONTACT.email}`, icon: Mail },
 ];
 
 export function Contact() {
@@ -73,14 +87,27 @@ export function Contact() {
             새로운 기회, 협업 제안, 혹은 가벼운 안부까지 — 언제든 편하게 연락 주세요.
           </p>
 
-          {/* 주 CTA — 전화와 메일을 가장 크게 */}
-          <div data-reveal data-reveal-delay="200" className="reveal mt-8 flex flex-col gap-3 sm:flex-row">
+          {/* 주 CTA — 전화 · 오픈카톡 · 메일 */}
+          <div
+            data-reveal
+            data-reveal-delay="200"
+            className="reveal mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             <a
               href={CONTACT.phoneHref}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-cyan px-7 text-[15px] font-semibold text-navy shadow-glow transition-transform duration-200 active:scale-[0.98]"
             >
               <Phone size={17} aria-hidden />
               전화하기
+            </a>
+            <a
+              href={CONTACT.kakaoOpenChat}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-signal-amber/40 bg-signal-amber/10 px-7 text-[15px] font-semibold text-signal-amber transition-colors duration-200 hover:bg-signal-amber/20 active:bg-signal-amber/25"
+            >
+              <MessageCircle size={17} aria-hidden />
+              오픈카톡 입장
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
@@ -96,9 +123,9 @@ export function Contact() {
         <dl
           data-reveal
           data-reveal-delay="260"
-          className="reveal mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2"
+          className="reveal mt-14 grid grid-cols-1 gap-3 sm:grid-cols-3"
         >
-          {CHANNELS.map(({ label, value, href, icon: Icon }) => {
+          {CHANNELS.map(({ label, value, href, icon: Icon, external }) => {
             const inner = (
               <div className="surface flex h-full items-center gap-4 p-5 transition-colors duration-300 hover:bg-panel-soft">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-cyan/10 text-cyan">
@@ -112,12 +139,17 @@ export function Contact() {
                 </div>
               </div>
             );
-            return href ? (
-              <a key={label} href={href} className="block">
+            return (
+              <a
+                key={label}
+                href={href}
+                className="block"
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
                 {inner}
               </a>
-            ) : (
-              <div key={label}>{inner}</div>
             );
           })}
         </dl>

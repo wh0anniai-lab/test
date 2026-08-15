@@ -27,8 +27,19 @@ export function useReveal<T extends HTMLElement>() {
       return;
     }
 
+    // IntersectionObserver 미지원 환경에서는 애니메이션 없이 그대로 보여준다.
+    if (typeof IntersectionObserver === "undefined") {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    // observer 가 살아 있는지 판단하는 플래그.
+    // IntersectionObserver 는 observe 직후 교차 여부와 무관하게 최초 콜백을 준다.
+    let delivered = false;
+
     const observer = new IntersectionObserver(
       (entries) => {
+        delivered = true;
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target as HTMLElement;
@@ -43,7 +54,23 @@ export function useReveal<T extends HTMLElement>() {
     );
 
     targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    /*
+     * 안전장치: reveal 요소는 기본값이 opacity 0 이라
+     * observer 가 동작하지 않으면 콘텐츠가 영영 보이지 않는다.
+     * 최초 콜백조차 오지 않았다면 observer 를 신뢰할 수 없다고 보고
+     * 전체를 그대로 드러낸다. (애니메이션보다 콘텐츠 노출이 우선)
+     */
+    const failsafe = window.setTimeout(() => {
+      if (delivered) return;
+      observer.disconnect();
+      targets.forEach((el) => el.classList.add("is-visible"));
+    }, 1500);
+
+    return () => {
+      window.clearTimeout(failsafe);
+      observer.disconnect();
+    };
   }, []);
 
   return ref;

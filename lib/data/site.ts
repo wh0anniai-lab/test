@@ -21,8 +21,7 @@ export const CONTACT = {
   phoneDisplay: "010-7369-1351",
   /** tel: 링크용 (E.164) */
   phoneHref: "tel:+821073691351",
-  location: "대한민국 (South Korea)",
-  expertise: "로봇공학 · AI 시스템 · 플랫폼 개발 · C / JAVA / PYTHON",
+  kakaoOpenChat: "https://open.kakao.com/o/gBOK6VIi",
 } as const;
 
 export type NavItem = {
