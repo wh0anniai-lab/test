@@ -41,27 +41,24 @@ export function Hero() {
 
           {/* 핵심 메시지 — 화면 중심을 장악하는 한 문장 */}
           {/*
-            줄바꿈이 뷰포트에 따라 달라진다.
-            모바일 4줄 : 기술을 연구하는 / 것에서 끝내지 않고, / 실제 제품으로 / 만듭니다.
-            데스크톱 3줄: 기술을 연구하는 것에서 / 끝내지 않고, / 실제 제품으로 만듭니다.
+            네 줄 고정 — 가장 긴 줄("사람들과 나눕니다.")이
+            390px 모바일부터 1440px 데스크톱까지 한 줄에 들어간다.
           */}
           <h1 className="mt-5 text-hero font-semibold text-white md:mt-7 md:text-hero-lg">
-            기술을 연구하는{" "}
-            <br className="md:hidden" />
-            것에서{" "}
-            <br className="hidden md:inline" />
-            끝내지 않고,
+            기술을 연구하고,
+            <br />
+            세상에 구현하며,
             <br />
             <span className="bg-gradient-to-r from-cyan via-cyan-soft to-purple bg-clip-text text-transparent">
-              실제 제품으로{" "}
-              <br className="md:hidden" />
-              만듭니다.
+              배움을 다시
+              <br />
+              사람들과 나눕니다.
             </span>
           </h1>
 
           <p className="mt-5 max-w-xl text-[15px] leading-[1.7] text-steel md:mt-7 md:text-[18px]">
-            Robotics에서 AI Systems까지, 연구·개발·창업을 연결해 실제 작동하는
-            제품을 만듭니다.
+            Robotics에서 AI Systems까지, 연구·개발·창업을 연결해 배움을 세상과
+            공유하고 있습니다.
           </p>
 
           {/* WHAT TO SEE */}

@@ -23,16 +23,16 @@ export type Featured = {
 
 export const FEATURED: Featured[] = [
   {
-    id: "drone-ai",
-    title: "Drone AI System",
-    subtitle: "OZO · AI Developer",
-    category: "AI Systems",
-    period: "2022.01 – 2022.06 (6개월)",
+    id: "kist",
+    title: "한국과학기술연구원(KIST)",
+    subtitle: "연구원",
+    category: "Robotics",
+    period: "2016 – 2018",
     summary:
-      "드론이 스스로 위치를 추정하고 비행 경로를 판단하는 자율 시스템. 연구용 알고리즘에서 끝내지 않고 제어 앱까지 함께 만들었습니다.",
-    role: "드론 AI 자율 시스템 개발",
-    result: "드론 제어 앱 개발 및 SLAM을 활용한 자율 비행 시스템 구축",
-    tags: ["AI", "SLAM", "DJI SDK", "Android"],
+      "Modular Gripper, Spherical Robot, Micro Push 등 Physical AI와 로봇과의 결합하여 제어 시스템을 앱으로 만들었습니다.",
+    role: "ROS, APP, ROBOT 통합 관리 시스템 개발",
+    result: "국내 저널 2, 국외 저널 1, Physical AI",
+    tags: ["AI", "ROS", "ROBOTICS", "Physical AI"],
     accent: "cyan",
   },
   {
@@ -49,16 +49,17 @@ export const FEATURED: Featured[] = [
     accent: "purple",
   },
   {
-    id: "gati",
-    title: "가티 (Gati)",
-    subtitle: "공동대표 · CTO",
-    category: "EdTech · Founder",
-    period: "2020 – 2022",
+    id: "educator",
+    title: "AI 디지털 튜터",
+    subtitle: "온,오프라인 강사",
+    category: "Educator, Digital Tutor",
+    period: "2026 – 현재",
     summary:
-      "게이밍과 에듀케이션을 결합한 플랫폼. 공동창업자이자 CTO로서 기술 전반을 설계하고 조직을 이끌었습니다.",
-    role: "게이밍 에듀케이션 플랫폼 기술 총괄 (CTO)",
-    result: "게이밍과 에듀케이션을 결합한 플랫폼 서비스",
-    tags: ["EdTech", "Platform", "CTO", "Service"],
+      "AI 시대에 맞춰 교육을 이수하고, 기관·학교·기업에서 강의를 통해 개발과 창업의 경험을 이제 가르침으로 연결하고 있습니다.",
+    role: "LLM, Agentic AI, DX & AX",
+    result:
+      "AI 강사 자격증, AI 서초 칼리지 with KAIST, 26년 디지털튜터 양성교육과정",
+    tags: ["교육", "ChatGPT", "Claude", "Gemini"],
     accent: "green",
   },
 ];

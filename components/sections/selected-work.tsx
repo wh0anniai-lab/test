@@ -36,8 +36,8 @@ export function SelectedWork() {
         <SectionHeader
           index="02"
           eyebrow="Selected Work"
-          title="만들어서 실제로 돌아간 것들"
-          description="연구로 끝난 결과가 아니라, 사용자가 쓰거나 현장에서 작동한 작업을 먼저 보여드립니다."
+          title="만들고, 경험하고, 창업하고, 공유한 것들"
+          description="연구에서 그치지 않고, 창업해서 제품을 출시해보고, 경험하고 배운 것을 공유하고 가르치고 있습니다."
         />
 
         {/* 모바일은 1열 스택이 기본, 데스크톱에서만 확장 */}
