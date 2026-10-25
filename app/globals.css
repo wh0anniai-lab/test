@@ -5,31 +5,29 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* 모바일 주소창 색상까지 배경과 맞춘다 */
-    background-color: #07111f;
+    background-color: #ffffff;
     -webkit-text-size-adjust: 100%;
   }
 
   /*
-   * 가로 넘침은 glow/blur 요소를 감싸는 컨테이너의 overflow-hidden 으로 막는다.
    * body 에 overflow-x 를 걸면 body 가 스크롤 컨테이너가 되어
    * window.scroll / position:sticky 동작이 깨지므로 사용하지 않는다.
    */
   body {
-    @apply bg-navy text-ink antialiased;
+    @apply bg-paper text-ink antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
     -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
   }
 
   ::selection {
-    background-color: rgba(36, 214, 255, 0.28);
-    color: #ffffff;
+    background-color: rgba(31, 52, 96, 0.16);
   }
 
   :focus-visible {
-    outline: 2px solid #24d6ff;
+    outline: 2px solid #1f3460;
     outline-offset: 3px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 
   /* 터치 하이라이트 제거 (커스텀 press 상태를 사용) */
@@ -40,14 +38,34 @@
 }
 
 @layer components {
-  /* 섹션 라벨: 01 SELECTED WORK 형태의 eyebrow */
+  /* 와인색 작은 대문자 라벨: QUOKA MOTION LAB 형태의 eyebrow */
   .eyebrow {
-    @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan md:text-[12px];
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-wine;
   }
 
-  /* 카드 기본 표면 — 과한 glassmorphism 대신 미세한 inner highlight */
-  .surface {
-    @apply rounded-lg border border-hairline bg-panel shadow-panel;
+  /* 흰 카드 — 테두리 대신 1px 링으로 패널 위에 띄운다 */
+  .card {
+    @apply rounded-lg bg-paper shadow-ring;
+  }
+
+  /* 회색 알약 — 태그 · 보조 버튼 */
+  .chip {
+    @apply inline-flex h-8 items-center whitespace-nowrap rounded-full bg-track px-3.5 text-[12.5px] font-medium text-ink;
+  }
+
+  /* 네이비 주 버튼 */
+  .btn-primary {
+    @apply inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-accent-hover active:scale-[0.98];
+  }
+
+  /* 회색 보조 버튼 */
+  .btn-soft {
+    @apply inline-flex h-11 items-center justify-center gap-2 rounded-full bg-track px-6 text-[14px] font-semibold text-ink transition-colors duration-200 hover:bg-hover active:scale-[0.98];
+  }
+
+  /* 섹션 사이 구분 — 쿼카의 .group ~ .group 처럼 선 하나로만 나눈다 */
+  .pane + .pane {
+    @apply mt-8 border-t border-line pt-7 md:mt-10 md:pt-9;
   }
 }
 
@@ -57,19 +75,31 @@
     opacity: 0;
   }
   .reveal.is-visible {
-    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* 스크롤 앵커가 sticky 헤더에 가리지 않도록 */
+  /* 스크롤 앵커가 상단 바 · 모바일 목차 줄에 가리지 않도록 */
   .scroll-anchor {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 8.5rem;
+  }
+  @media (min-width: 1024px) {
+    .scroll-anchor {
+      scroll-margin-top: 6rem;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;

@@ -109,3 +109,28 @@ export const STATS: Stat[] = [
     description: "국내, 국제 학술지에 연구 성과 발표",
   },
 ];
+
+export type Credential = {
+  title: string;
+  detail: string;
+};
+
+/** 강의 · 자격 — Lecture 섹션 오른쪽 목록 (기존 lecture.tsx 안의 값을 그대로 옮김) */
+export const CREDENTIALS: Credential[] = [
+  {
+    title: "경상대학교 대학원 강의",
+    detail: "AI & Python 기술 강의 강사",
+  },
+  {
+    title: "AI 서초칼리지 with KAIST",
+    detail: "AI 최신 연구 동향 및 실무 교육 이수 완료",
+  },
+  {
+    title: "「2026 AI디지털튜터 양성 교육 사업」",
+    detail: "이수 완료",
+  },
+  {
+    title: "AI 글로벌 협회",
+    detail: "AI 강사 자격증",
+  },
+];

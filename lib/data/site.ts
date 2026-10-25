@@ -24,6 +24,28 @@ export const CONTACT = {
   kakaoOpenChat: "https://open.kakao.com/o/gBOK6VIi",
 } as const;
 
+/** 연락 채널 — 아이콘은 화면 쪽(contact.tsx)에서 kind 로 고른다 */
+export type ContactChannel = {
+  kind: "phone" | "kakao" | "email";
+  label: string;
+  value: string;
+  href: string;
+  /** 외부 사이트로 나가는 링크인지 */
+  external?: boolean;
+};
+
+export const CONTACT_CHANNELS: ContactChannel[] = [
+  { kind: "phone", label: "전화", value: CONTACT.phoneDisplay, href: CONTACT.phoneHref },
+  {
+    kind: "kakao",
+    label: "오픈카톡",
+    value: "오픈채팅방으로 바로 연결",
+    href: CONTACT.kakaoOpenChat,
+    external: true,
+  },
+  { kind: "email", label: "이메일", value: CONTACT.email, href: `mailto:${CONTACT.email}` },
+];
+
 export type NavItem = {
   label: string;
   href: string;
@@ -36,4 +58,22 @@ export const NAV: NavItem[] = [
   { label: "Career", href: "#career" },
   { label: "Lecture", href: "#lecture" },
   { label: "Contact", href: "#contact" },
+];
+
+/** 왼쪽 목차(쿼카 모션랩의 레일)에 나오는 섹션 — id 는 각 섹션의 앵커와 같다 */
+export type SectionItem = {
+  id: string;
+  label: string;
+};
+
+export const SECTIONS: SectionItem[] = [
+  { id: "work", label: "Selected Work" },
+  { id: "capabilities", label: "What I Build" },
+  { id: "now", label: "Now" },
+  { id: "story", label: "Story" },
+  { id: "career", label: "Career" },
+  { id: "archive", label: "Engineering Archive" },
+  { id: "lecture", label: "Lecture" },
+  { id: "tech", label: "Tech" },
+  { id: "contact", label: "Contact" },
 ];

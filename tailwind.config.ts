@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Design tokens — Deep Navy 기반 다크 UI.
- * 페이지의 80~90%는 navy/panel/text 로 구성하고
- * cyan / purple 은 CTA · glow · 강조에만 제한적으로 사용한다.
+ * Design tokens — 쿼카 모션랩(quoka-motion-lab) 스타일의 밝은 UI.
+ * 흰 바탕 위에 회색 패널(panel)과 알약형 트랙(track)으로 층을 나누고,
+ * 색은 네이비(accent · 주 버튼)와 와인(wine · 작은 라벨) 두 가지만 쓴다.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
@@ -11,38 +11,27 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1.25rem",
-        md: "2rem",
+        DEFAULT: "1rem",
+        md: "1.25rem",
       },
       screens: {
-        "2xl": "1200px",
+        "2xl": "1240px",
       },
     },
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#07111F", // background
-          deep: "#050C17", // footer / 더 어두운 층
+        paper: "#FFFFFF", // 페이지 바탕
+        panel: "#F5F5F7", // 큰 영역 · 카드 바탕
+        track: "#ECECF0", // 알약 버튼 · 입력칸 · 썸네일 바탕
+        hover: "#E0E0E6",
+        ink: "#1D1D1F", // 본문 글자
+        muted: "#6E6E73", // 보조 글자
+        line: "#E4E4E9", // 구분선 · 카드 테두리
+        accent: {
+          DEFAULT: "#1F3460", // 네이비 — 주 버튼 · 강조
+          hover: "#18294D",
         },
-        panel: {
-          DEFAULT: "#0B1E33", // card surface
-          soft: "#0E2540", // hover / raised
-        },
-        cyan: {
-          DEFAULT: "#24D6FF",
-          soft: "#7FE7FF",
-        },
-        purple: {
-          DEFAULT: "#8B5CF6",
-        },
-        ink: "#D8E1EA", // text primary
-        steel: "#AAB7C4", // text secondary
-        hairline: "rgba(216, 225, 234, 0.10)",
-        signal: {
-          green: "#3DFFB5",
-          amber: "#FFB020",
-          red: "#FF5C7A",
-        },
+        wine: "#6E1A2F", // 와인 — eyebrow · 작은 라벨
       },
       fontFamily: {
         sans: [
@@ -50,45 +39,40 @@ const config: Config = {
           "Pretendard",
           "-apple-system",
           "BlinkMacSystemFont",
+          "Apple SD Gothic Neo",
           "system-ui",
           "sans-serif",
         ],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       fontSize: {
         /*
          * Mobile-first 타이포 스케일.
-         * 한글은 글자당 약 1em 폭을 차지하므로, 390px(콘텐츠 폭 350px)에서
-         * 가장 긴 줄이 넘치지 않는 vw 값을 상한으로 잡았다.
-         * 크기만 줄이지 않고 각 헤드라인의 줄바꿈도 함께 최적화한다.
+         * 한글은 글자당 약 1em 폭을 차지하므로, 390px(콘텐츠 폭 358px)에서
+         * 가장 긴 줄("사람들과 나눕니다.")이 넘치지 않는 vw 값을 상한으로 잡았다.
          */
-        hero: ["clamp(2rem, 9.2vw, 2.75rem)", { lineHeight: "1.12", letterSpacing: "-0.03em" }],
-        "hero-lg": ["clamp(3.25rem, 5.6vw, 5rem)", { lineHeight: "1.06", letterSpacing: "-0.035em" }],
-        display: ["clamp(1.75rem, 7.2vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em" }],
-        section: ["clamp(1.6rem, 6.2vw, 2.25rem)", { lineHeight: "1.18", letterSpacing: "-0.02em" }],
+        hero: ["clamp(1.9rem, 8.4vw, 3.25rem)", { lineHeight: "1.12", letterSpacing: "-0.04em" }],
+        pane: ["clamp(1.25rem, 5vw, 1.5rem)", { lineHeight: "1.25", letterSpacing: "-0.03em" }],
       },
       borderRadius: {
-        xl: "24px",
-        lg: "20px",
-        md: "16px",
-        sm: "10px",
+        xl: "28px",
+        lg: "22px",
+        md: "20px",
+        sm: "12px",
       },
       boxShadow: {
-        panel: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 12px 32px -16px rgba(0,0,0,0.7)",
-        glow: "0 0 0 1px rgba(36,214,255,0.25), 0 8px 40px -12px rgba(36,214,255,0.35)",
+        ring: "0 0 0 1px #E4E4E9",
+        bar: "0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px -12px rgba(0,0,0,0.14)",
+        lift: "0 0 0 1px #E4E4E9, 0 10px 24px -14px rgba(0,0,0,0.18)",
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        drift: {
-          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
-          "50%": { transform: "translate3d(0,-16px,0) scale(1.06)" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards",
-        drift: "drift 14s ease-in-out infinite",
+        "fade-up": "fade-up 0.6s cubic-bezier(0.16,1,0.3,1) forwards",
       },
     },
   },
