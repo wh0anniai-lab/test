@@ -1,33 +1,22 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Hero } from "@/components/sections/hero";
-import { SelectedWork } from "@/components/sections/selected-work";
-import { Capabilities } from "@/components/sections/capabilities";
-import { Now } from "@/components/sections/now";
-import { Story } from "@/components/sections/story";
-import { Career } from "@/components/sections/career";
-import { EngineeringArchive } from "@/components/sections/engineering-archive";
-import { Lecture } from "@/components/sections/lecture";
-import { TechStack } from "@/components/sections/tech-stack";
-import { Contact } from "@/components/sections/contact";
+import { IdentityMap } from "@/components/identity-map";
+import { FEATURED, ARCHIVE } from "@/lib/data/projects";
+import { STATS } from "@/lib/data/career";
+import { CAPABILITIES, NOW, STORY, TECH } from "@/lib/data/capabilities";
+import { CONTACT } from "@/lib/data/site";
+
+const sections = ["top", "work", "systems", "journey", "archive", "contact"];
+function Eyebrow({ children }: { children: React.ReactNode }) { return <p className="eyebrow"><span aria-hidden />{children}</p>; }
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main className="bg-navy">
-        <Hero />
-        <SelectedWork />
-        <Capabilities />
-        <Now />
-        <Story />
-        <Career />
-        <EngineeringArchive />
-        <Lecture />
-        <TechStack />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
+  return <><Header /><main>
+    <section id="top" className="hero section-shell"><div className="content-grid hero-grid"><div className="hero-copy"><Eyebrow>Kim Dong Young · AI Builder & Founder</Eyebrow><h1>기술을 연구하고,<br />세상에 구현하며,<br /><em>배움을 다시 나눕니다.</em></h1><p className="lede">Robotics에서 AI Systems까지. 연구·개발·창업을 연결해 실제로 작동하는 것을 만들고, 그 경험을 다시 사람들과 공유합니다.</p><div className="actions"><a className="button primary" href="#work">작업 살펴보기 <span>↓</span></a><a className="button secondary" href="#contact">함께 이야기하기 <span>→</span></a></div></div><IdentityMap /></div><div className="hero-index" aria-hidden><span>RESEARCH</span><span>BUILD</span><span>LAUNCH</span><span>TEACH</span></div></section>
+    <section id="work" className="section-shell"><div className="content-grid"><div><Eyebrow>선별한 작업</Eyebrow><h2>연구에서 끝나지 않고,<br />현실에서 작동하게 합니다.</h2><p className="section-intro">만들고, 경험하고, 창업하고, 공유한 것들.</p><div className="line-list">{FEATURED.map((p,i)=><article className="line-item" key={p.id}><div className="item-meta"><span>{p.category}</span><span>{p.period}</span></div><h3>{p.title} <span className="arrow">↗</span></h3><p>{p.summary}</p><div className="tag-row">{p.tags.map(t=><span key={t}>{t}</span>)}</div><span className="item-no">0{i+1}</span></article>)}</div></div><Stage mode="work" label={<>FROM LAB<br />TO LIFE</>} /></div></section>
+    <section id="systems" className="section-shell"><div className="content-grid"><div><Eyebrow>만드는 방식</Eyebrow><h2>물리 세계와 디지털 세계를<br />하나의 시스템으로 봅니다.</h2><div className="line-list compact">{CAPABILITIES.map((x,i)=><div className="line-item" key={x.title}><div className="item-meta"><span>0{i+1}</span><span>{x.items.join(" · ")}</span></div><h3>{x.title}</h3><p>{x.caption}</p></div>)}</div><div className="metrics">{STATS.map(s=><div key={s.label}><strong>{s.value}</strong><span>{s.label}</span></div>)}</div></div><Stage mode="systems" label={<>PHYSICAL AI<br />IN MOTION</>} /></div></section>
+    <section id="journey" className="section-shell"><div className="content-grid"><div><Eyebrow>지금과 여정</Eyebrow><h2>배운 것은 만들고,<br />만든 것은 다시 가르칩니다.</h2><div className="now-grid">{NOW.map(x=><div key={x.label}><span>{x.label}</span><strong>{x.value}</strong><p>{x.detail}</p></div>)}</div><ol className="timeline">{STORY.map(x=><li key={x.stage}><span>{x.period}</span><div><strong>{x.stage} · {x.title}</strong><p>{x.description}</p></div></li>)}</ol></div><Stage mode="journey" label={<>EXPERIENCE<br />BECOMES KNOWLEDGE</>} /></div></section>
+    <section id="archive" className="section-shell"><div className="content-grid"><div><Eyebrow>엔지니어링 아카이브</Eyebrow><h2>손으로 만든 시스템은<br />오래 남습니다.</h2><div className="line-list compact">{ARCHIVE.map(x=><div className="line-item" key={x.title}><div className="item-meta"><span>{x.period}</span><span>Engineering</span></div><h3>{x.title}</h3><p>{x.result}</p></div>)}</div><div className="tech-block">{TECH.map(x=><div key={x.title}><span>{x.title}</span><p>{x.items.join(" · ")}</p></div>)}</div></div><Stage mode="archive" label={<>MEMORY<br />IS A TOOL</>} /></div></section>
+    <section id="contact" className="section-shell contact-section"><div className="content-grid"><div><Eyebrow>연결</Eyebrow><h2>좋은 질문에서<br />새로운 시스템이 시작됩니다.</h2><p className="section-intro">협업, 강의, 제품과 기술에 관한 대화를 기다립니다.</p><div className="contact-list"><a href={`mailto:${CONTACT.email}`}><span>Email</span><strong>{CONTACT.email}</strong><b>↗</b></a><a href={CONTACT.kakaoOpenChat} target="_blank" rel="noreferrer"><span>KakaoTalk</span><strong>1:1 오픈채팅</strong><b>↗</b></a><a href={CONTACT.phoneHref}><span>Phone</span><strong>{CONTACT.phoneDisplay}</strong><b>→</b></a></div></div><Stage mode="contact" label={<>SEND<br />A SIGNAL</>} /></div></section>
+  </main><nav className="section-dots" aria-label="섹션 바로가기">{sections.map((id,i)=><a key={id} href={`#${id}`} aria-label={`${i+1}번 섹션`} />)}</nav><Footer /></>;
 }
+function Stage({label,mode}:{label:React.ReactNode;mode:string}) { return <div className={`field-stage sticky-stage visual-${mode}`} aria-hidden><div className="visual-core"><i/><i/><i/><i/><span>DY</span></div><p className="shape-label">{label}</p></div>; }

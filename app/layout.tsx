@@ -36,8 +36,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07111F",
-  colorScheme: "dark",
+  themeColor: "#F6F4EE",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -60,10 +60,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <noscript>
           <style>{`.reveal { opacity: 1 !important; }`}</style>
         </noscript>
-        <a
-          href="#work"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-cyan focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-navy"
-        >
+        <a href="#work" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2">
           본문으로 건너뛰기
         </a>
         {children}
