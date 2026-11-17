@@ -1,19 +1,26 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
 import { CONTACT } from "@/lib/data/site";
 
-export function Header() {
-  return (
-    <header className="masthead">
-      <div className="wrap mast-inner">
-        <Link href="/" aria-label="김동영 홈" className="wordmark">dy<span>.</span></Link>
-        <nav aria-label="주요 메뉴">
-          <Link href="/#work">개발</Link>
-          <Link href="/#teaching">강의</Link>
-          <Link href="/#business">사업</Link>
-          <Link href="/reviews">실강 후기</Link>
-        </nav>
-        <a className="inquire" href={CONTACT.kakaoOpenChat} target="_blank" rel="noreferrer">문의 ↗</a>
-      </div>
-    </header>
-  );
+const items = [["Work","/#work"],["About","/#about"],["Timeline","/#timeline"],["Education","/#teaching"],["실강 후기","/reviews"],["Contact","#contact"]];
+
+export function Header(){
+  const [open,setOpen] = useState(false);
+  const [raised,setRaised] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  useEffect(()=>{
+    const update=()=>setRaised(window.scrollY>12);
+    update();
+    window.addEventListener("scroll",update,{passive:true});
+    return ()=>window.removeEventListener("scroll",update);
+  },[]);
+  return <header className={"masthead"+(raised || open?" raised":"")} onKeyDown={e=>{
+    if(e.key==="Escape" && open){setOpen(false);toggle.current?.focus();}
+  }}>
+    <div className="wrap mast-inner"><Link className="wordmark" href="/" onClick={()=>setOpen(false)}>KIM DONGYOUNG</Link>
+    <nav id="site-nav" aria-label="주요 메뉴" className={open?"expanded":""}>{items.map(([name,href])=><Link key={name} href={href} onClick={()=>setOpen(false)}>{name}</Link>)}</nav>
+    <a className="inquire" href={CONTACT.kakaoOpenChat} target="_blank" rel="noreferrer">문의 ↗</a>
+    <button ref={toggle} className="menu-toggle" aria-controls="site-nav" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?"닫기":"메뉴"}</button></div>
+  </header>;
 }

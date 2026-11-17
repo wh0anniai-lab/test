@@ -12,10 +12,10 @@ export function ContactActions() {
 
 export function Footer() {
   return (
-    <footer className="wrap">
-      <div><span className="kicker">Contact</span><h2>함께할 일을 이야기해요.</h2></div>
+    <footer id="contact"><div className="wrap">
+      <div><span className="kicker">Contact</span><h2>기술이 실제 현장에서<br/>작동하도록 만듭니다.</h2></div>
       <ContactActions />
       <div className="footer-line"><span>김동영 · Kim Dong Young</span><a href={CONTACT.phoneHref}>{CONTACT.phoneDisplay}</a><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div>
-    </footer>
+    </div></footer>
   );
 }

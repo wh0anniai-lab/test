@@ -1,57 +1,40 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ContactActions } from "@/components/layout/footer";
-import { WorkMotion } from "@/components/work-motion";
-import { CONTACT } from "@/lib/data/site";
-import lecturePhoto from "@/public/images/lecture.jpg";
-
-const services = [
-  { title: "돌보다", category: "Public data", image: "dolboda", url: "https://www.dolboda.kr/", body: "수만 건의 공공데이터를 정제해 시설별 돌봄 여건을 비교할 수 있도록 기획하고 개발했습니다." },
-  { title: "인플루잇", category: "Web service", image: "influit", url: "https://www.influit.kr/", body: "브랜드와 인플루언서를 연결하는 서비스를 기획하고, 사용자가 이용할 수 있는 웹으로 구현했습니다." },
-  { title: "4season · stars", category: "Domain engine", image: "stars", url: "https://4season-web1.vercel.app/stars", body: "연도별 실제 절기 시각으로 경계를 계산합니다. 출생 시각 미상도 처리하고 판정 근거를 함께 제공합니다." },
-];
+import { AboutText, Education, Portrait, Timeline } from "@/components/editorial";
+import { StudyArt } from "@/components/study-art";
+import { studies } from "@/lib/data/work";
 
 export default function Home() {
-  return (
-    <main id="main">
-      <section className="wrap hero">
-        <div className="intro">
-          <p className="kicker"><i className="dot"/> Developer · Educator · Founder</p>
-          <h1>김동영<span>.</span></h1>
-          <p className="name-en" lang="en">Kim Dong Young</p>
-          <p className="lead">AI로 서비스를 만들고, 직접 운영하며,<br/>그 경험을 수업에서 나눕니다.</p>
-          <ContactActions />
+  return <main id="main">
+    <section className="wrap cover">
+      <div><p className="kicker"><i className="dot"/> 김동영 · AI 개발자 / 강사 / 대표</p>
+        <h1 className="sequence">Research<br/><i>→</i> Build<br/><i>→</i> Service<br/><i>→</i> Education</h1>
+        <p className="cover-deck">기술을 연구해 실제 서비스로 구현하고,<br/>그 경험을 다시 교육으로 연결합니다.</p>
+        <ContactActions/>
+      </div>
+      <div className="cover-aside"><Portrait/>
+        <div className="recent-work"><span>최근 현장 프로젝트</span>
+          <Link href="/work/flower-uploader">OCR 배송사진 등록 자동화 ↗</Link>
+          <Link href="/work/fatima-pharmacy">약제부 Excel 재고조사의 웹 전환 ↗</Link>
         </div>
-        <WorkMotion />
-      </section>
-      <section id="work" className="wrap section">
-        <span className="kicker">Selected development / 2026</span>
-        <h2>직접 만든 서비스</h2>
-        <div className="projects">
-          {services.map(s => <a className="project" href={s.url} key={s.title} target="_blank" rel="noreferrer">
-            <div className="screenshot"><Image src={`/images/dy-${s.image}.jpg`} width={1280} height={800} sizes="(max-width: 720px) 92vw, 32vw" alt={`${s.title} 서비스 첫 화면`}/></div>
-            <span className="kicker">{s.category} · 웹서비스</span><h3>{s.title}<span>↗</span></h3><p>{s.body}</p>
-          </a>)}
-        </div>
-        <details className="research"><summary><span className="kicker">AI 연구 프로토타입</span><strong>Nanogen AI Agent</strong><span>검증 과정 보기</span></summary>
-          <p>논문·특허에서 추출한 값에 원문 구절을 연결했습니다. 대응하는 근거를 찾을 수 없으면 사실로 저장하지 않습니다. 출처, 중복, 매핑, 실패 처리 등을 134개 오프라인 테스트로 검증했습니다.</p>
-        </details>
-      </section>
-      <section id="teaching" className="teaching section">
-        <div className="wrap"><span className="kicker">Teaching</span><h2>지금 가르치는 두 현장</h2>
-          <div className="teaching-layout"><div className="courses">
-            <article><span className="kicker">학교 수업 · 진행 중</span><h3>이솔초등학교 AI·SW 수업</h3><p>2026년 9월부터 초등학생들과 엔트리로 게임을 만들고, 좌표와 알고리즘을 익히고, AI 윤리를 토론합니다.</p></article>
-            <article><span className="kicker">온라인 수업 · 진행 중</span><h3>성인을 위한 온라인 AI 강의</h3><p>하고 싶은 일을 말로 정의하고, 생성형 AI가 만든 결과를 확인하고 고칩니다. 업무자동화와 웹 제작을 실습으로 연결합니다.</p></article>
-            <div className="teaching-links"><Link href="/reviews">실강 후기 12편 →</Link><a href={CONTACT.kakaoOpenChat}>강의 문의 ↗</a></div>
-          </div><figure className="lecture-photo"><Image src={lecturePhoto} alt="강의실에서 수강생에게 설명하는 김동영" sizes="(max-width: 720px) 92vw, 46vw"/><figcaption>대학 강의 현장 · 2026년 국립경상대학교 AI·Python 과정 진행</figcaption></figure></div>
-        </div>
-      </section>
-      <section id="business" className="wrap section"><span className="kicker">Business &amp; operation</span><h2>서비스를 운영하는 대표</h2>
-        <div className="ventures"><article><span className="kicker">2018 — 현재</span><h3>맘잇 <em>MomIt</em></h3><strong>대표 · CEO &amp; CTO</strong><p>플랫폼 기획부터 개발과 운영까지 맡고 있습니다. 대학협력단·지자체·외부 협력자와 일하며 사용자 요구와 일정, 자원을 함께 조율합니다.</p></article>
-        <article><span className="kicker">2020 — 2022</span><h3>가티 <em>Gati</em></h3><strong>공동대표 · CTO</strong><p>게이밍 교육 플랫폼을 사업화하며 모바일·웹서비스 개발을 이끌었습니다. 공동대표로서 팀과 제품의 기술적 우선순위를 정했습니다.</p></article></div>
-        <a className="plain" href={CONTACT.kakaoOpenChat}>사업·개발 협업 문의 ↗</a>
-        <details className="research"><summary><span className="kicker">Robotics</span><strong>연구·개발의 출발점</strong><span>경력 보기</span></summary><p>대학 연구실에서 무인경비로봇을 개발하고, KIST(2016–2017)에서 모듈형 그리퍼·Micro Push·구형 로봇을 연구했습니다. OZO(2022)에서는 DJI Drone SDK와 SLAM을 활용해 자율비행 시스템을 개발했습니다.</p></details>
-      </section>
-    </main>
-  );
+      </div>
+    </section>
+    <section id="work" className="wrap section selected">
+      <div className="section-heading"><div><span className="kicker">Projects / 2014–2026</span><h2>Selected work<span>.</span></h2></div><p>로봇 연구에서 현장 업무자동화까지.<br/>설계하고 운영하며 검증한 여섯 가지 작업입니다.</p></div>
+      <div className="case-grid">{studies.map((s,index)=><article key={s.slug} className={`work-card work-${index+1}`}>
+        <div className="work-copy"><p className="kicker"><b>{String(index+1).padStart(2,"0")}</b> {s.discipline}</p><h3><Link href={"/work/"+s.slug}>{s.title}</Link></h3>
+          <p>{s.summary}</p>{index===0 && <p className="case-stat"><strong>3 → 0건</strong> 동일 과거 데이터 재검증 시 오등록</p>}
+          <Link className="text-link" href={"/work/"+s.slug} aria-label={s.title+" 사례 읽기"}>사례 읽기 →</Link></div>
+        <Link className="art-link" href={"/work/"+s.slug}><StudyArt study={s}/></Link>
+      </article>)}</div>
+    </section>
+    <section className="method section"><div className="wrap"><span className="kicker">How I work</span><h2>I redesign the workflow<span>.</span></h2><p className="section-lead">실제 업무가 안전하게 돌아가는 구조를 다시 설계합니다.</p>
+      <ol className="steps">{[["Understand","사용자를 만나 일이 멈추는 순간과 예외를 찾습니다."],["Structure","입력 데이터와 판단 기준, 사람이 확인할 조건을 정합니다."],["Build","웹·자동화·AI를 현장의 도구와 연결합니다."],["Validate","운영 기록으로 오류를 재현하고 같은 조건에서 다시 검증합니다."]].map(([a,b],i)=><li key={a}><span>0{i+1}</span><h3>{a}</h3><p>{b}</p></li>)}</ol></div>
+    </section>
+    <section id="about" className="wrap section split"><div><span className="kicker">About / 김동영</span><h2>연구실에서<br/>운영 현장으로.</h2><Link href="/about" className="text-link">프로필 보기 →</Link></div><AboutText/></section>
+    <Timeline/><Education/>
+    <section className="wrap section split"><div><span className="kicker">Skills</span><h2>기술과 도구</h2></div><dl className="skill-list">
+      {[["AI / Agent","ChatGPT · Claude · Gemini · Grounding · Agent · RAG 구조"],["AX / Automation","OCR · OpenCV · Azure AI Vision · Playwright · Fuzzy Matching · PySide6"],["Data","Python · pandas · NumPy · SQLite · 데이터 파이프라인 · 특성 설계"],["Robotics","ROS · SLAM · 센서 융합 · DJI Drone SDK · BLE · C/C++"],["Product / Web","웹서비스 · 내부 업무 앱 · 업무 디지털화 · 반응형 UX"]].map(([a,b])=><div key={a}><dt>{a}</dt><dd>{b}</dd></div>)}
+    </dl></section>
+  </main>;
 }

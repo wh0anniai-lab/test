@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SITE } from "@/lib/data/site";
 import "./globals.css";
+import "./fonts/pretendard/pretendardvariable-dynamic-subset.css";
+import "./editorial.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F6F4EE",
+  themeColor: "#F4EFE8",
   colorScheme: "light",
 };
 
@@ -46,16 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <head>
-        {/*
-          Pretendard 는 Google Fonts 에 없어 next/font 로 처리할 수 없다.
-          CSS @import 는 렌더 블로킹이 크므로 preconnect + link 로 로드한다.
-          dynamic-subset 버전이라 한글 필요 글리프만 내려받는다.
-        */}
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
-        />
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/inter/inter-latin-wght-normal.woff2" crossOrigin="anonymous" />
       </head>
       <body className="font-sans">
         {/* JS 없이도 콘텐츠가 보이도록 보장 */}

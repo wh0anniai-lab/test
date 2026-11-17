@@ -10,7 +10,7 @@ export const SITE = {
   role: "AI Builder · Founder",
   title: "김동영 | AI 개발자 · 강사 · 사업 대표",
   description:
-    "AI 웹서비스를 만들고 운영하며, 학교와 성인 온라인 강의에서 그 경험을 나누는 김동영입니다. 개발 협업과 강의 문의를 환영합니다.",
+    "김동영의 로봇 R&D, OCR 배송사진 등록 자동화, 병원 약제부 재고조사 웹앱, 근거 기반 AI 개발과 교육 사례를 소개합니다. 개발 협업과 강의 문의를 환영합니다.",
   url: "https://test-gilt-five-wjfw6hbp9q.vercel.app",
 } as const;
 
