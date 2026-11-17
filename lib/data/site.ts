@@ -8,9 +8,9 @@ export const SITE = {
   nameEn: "Kim Dong Young",
   initials: "DY.",
   role: "AI Builder · Founder",
-  title: "김동영 — AI Builder & Founder",
+  title: "김동영 | AI 개발자 · 강사 · 사업 대표",
   description:
-    "AI Systems, Product, Robotics를 연결해 실제 작동하는 제품을 만드는 AI Builder & Founder 김동영의 포트폴리오.",
+    "AI 웹서비스를 만들고 운영하며, 학교와 성인 온라인 강의에서 그 경험을 나누는 김동영입니다. 개발 협업과 강의 문의를 환영합니다.",
   url: "https://test-gilt-five-wjfw6hbp9q.vercel.app",
 } as const;
 

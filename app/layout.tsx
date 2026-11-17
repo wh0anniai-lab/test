@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SITE } from "@/lib/data/site";
 import "./globals.css";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -60,10 +62,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <noscript>
           <style>{`.reveal { opacity: 1 !important; }`}</style>
         </noscript>
-        <a href="#work" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2">
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2">
           본문으로 건너뛰기
         </a>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

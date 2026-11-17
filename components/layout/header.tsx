@@ -1,5 +1,19 @@
-"use client";
-import { useState } from "react";
+import Link from "next/link";
 import { CONTACT } from "@/lib/data/site";
-const links = [["작업","#work"],["시스템","#systems"],["여정","#journey"],["아카이브","#archive"]];
-export function Header(){const[open,setOpen]=useState(false);return <header className="site-header"><a className="brand" href="#top" aria-label="홈"><span>DY</span><i /></a><nav className={open?"open":""}>{links.map(([l,h])=><a key={h} href={h} onClick={()=>setOpen(false)}>{l}</a>)}<a className="header-cta" href={`mailto:${CONTACT.email}`}>프로젝트 문의 →</a></nav><button onClick={()=>setOpen(!open)} aria-label="메뉴" aria-expanded={open}>{open?"×":"≡"}</button></header>}
+
+export function Header() {
+  return (
+    <header className="masthead">
+      <div className="wrap mast-inner">
+        <Link href="/" aria-label="김동영 홈" className="wordmark">dy<span>.</span></Link>
+        <nav aria-label="주요 메뉴">
+          <Link href="/#work">개발</Link>
+          <Link href="/#teaching">강의</Link>
+          <Link href="/#business">사업</Link>
+          <Link href="/reviews">실강 후기</Link>
+        </nav>
+        <a className="inquire" href={CONTACT.kakaoOpenChat} target="_blank" rel="noreferrer">문의 ↗</a>
+      </div>
+    </header>
+  );
+}
