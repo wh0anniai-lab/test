@@ -39,7 +39,8 @@ export function Timeline() {
 
 export function Education() {
   return <section id="teaching" className="section edu"><div className="wrap"><span className="kicker">Education</span><h2>Build it. Test it.<br/><em>Explain it.</em></h2>
-    <div className="split"><figure className="education-photo"><Image src={lecture} sizes="(max-width: 720px) 90vw, 45vw" alt="대학 강의실에서 수강생에게 설명하는 김동영"/><figcaption>대학 강의 현장</figcaption></figure>
+    <div className="split"><div className="teaching-artwork"><Image className="classroom-art" src="/images/illustrations/teaching.webp" width={1280} height={960} sizes="(max-width: 680px) 90vw, 44vw" alt="학습자와 함께 코드와 로봇을 살펴보는 AI 실습 수업 일러스트"/>
+    <details className="classroom-record"><summary>실제 대학 강의 현장 보기</summary><figure className="education-photo"><Image src={lecture} sizes="(max-width: 680px) 90vw, 44vw" alt="대학 강의실에서 수강생에게 설명하는 김동영"/></figure></details></div>
     <div className="lessons"><h3>현재 진행하는 수업</h3><p><strong>이솔초등학교 AI·SW</strong>　엔트리로 게임을 만들며 좌표와 알고리즘을 익히고, AI 윤리를 토론합니다.</p><p><strong>성인 온라인 AI 강의</strong>　자연어로 요구사항을 쓰고, 생성된 결과를 점검하고 고치는 실습을 진행합니다.</p>
     <h3>대학 강의</h3><p>국립경상대학교 AI·Python 기초 과정에서 변수와 반복문부터 pandas 데이터 처리와 시각화까지 다뤘습니다. (2026년 4–6월)</p>
     <h3>교육과정 설계</h3><p>기업·성인 대상 생성형 AI, 바이브 코딩, 업무자동화와 연구소 대상 논문·특허 근거 추적 실습을 설계합니다.</p><Link href="/reviews" className="text-link">수강생 실강 후기 12편 →</Link></div></div></div>

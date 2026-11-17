@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ContactActions } from "@/components/layout/footer";
-import { AboutText, Education, Portrait, Timeline } from "@/components/editorial";
+import { AboutText, Education, Timeline } from "@/components/editorial";
 import { StudyArt } from "@/components/study-art";
 import { studies } from "@/lib/data/work";
 
@@ -12,7 +13,10 @@ export default function Home() {
         <p className="cover-deck">기술을 연구해 실제 서비스로 구현하고,<br/>그 경험을 다시 교육으로 연결합니다.</p>
         <ContactActions/>
       </div>
-      <div className="cover-aside"><Portrait/>
+      <div className="cover-aside">
+        <Image className="workspace-art" src="/images/illustrations/workspace.webp"
+          width={1280} height={960} priority sizes="(max-width: 680px) 90vw, (max-width: 1400px) 39vw, 520px"
+          alt="연구·개발·서비스·교육을 잇는 선 아래 노트북을 펼친 개발자의 작업 공간 일러스트"/>
         <div className="recent-work"><span>최근 현장 프로젝트</span>
           <Link href="/work/flower-uploader">OCR 배송사진 등록 자동화 ↗</Link>
           <Link href="/work/fatima-pharmacy">약제부 Excel 재고조사의 웹 전환 ↗</Link>

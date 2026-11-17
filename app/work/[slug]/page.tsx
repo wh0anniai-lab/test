@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { StudyArt } from "@/components/study-art";
 import { studies } from "@/lib/data/work";
@@ -21,10 +22,12 @@ export default function Project({params}: Props) {
     <header className="detail-heading"><p className="kicker">0{index+1} / {study.discipline}</p><h1>{study.title}</h1><p>{study.period}</p></header>
     <div className="split"><div><p className="detail-intro">{study.summary}</p>
     {study.url && <a className="text-link" href={study.url} target="_blank" rel="noreferrer">서비스 열기 ↗</a>}
-    </div><StudyArt study={study}/></div>
+    </div><StudyArt study={study} detail/></div>
     {study.metrics && <dl className="facts">{study.metrics.map(([n,label])=><div key={label}><dt>{label}</dt><dd>{n}</dd></div>)}</dl>}
     <h2 className="subhead">업무 흐름</h2><ol className="flow">{study.flow.map(s=><li key={s}>{s}</li>)}</ol>
     <div className="chapters">{study.chapters.map(([t,b])=><section key={t}><h2>{t}</h2><p>{b}</p></section>)}</div>
+    {study.image && <figure className="service-capture"><figcaption>{study.title} · 실제 서비스 화면</figcaption>
+      <Image src={study.image} alt={study.title + " 서비스의 첫 화면"} width={1280} height={800} sizes="(max-width: 960px) 90vw, 840px"/></figure>}
     <Link className="text-link" href={"/work/"+next.slug}>다음 사례 · {next.title} →</Link>
   </main>;
 }

@@ -2,6 +2,7 @@ export type CaseStudy = {
   slug: string;
   title: string;
   discipline: string;
+  artDescription: string;
   period: string;
   summary: string;
   flow: string[];
@@ -14,6 +15,7 @@ export type CaseStudy = {
 export const studies: CaseStudy[] = [
   {
     slug: "flower-uploader", title: "FlowerUploader", discipline: "Computer vision / AX",
+    artDescription: "FlowerUploader 개념도. 배송사진 속 리본을 읽어 주문과 대조하고, 결과를 확인해 사이트에 등록하는 과정",
     period: "2026.10.04 — 10.23 · Windows · V1.03",
     summary: "리본 문구를 읽고 주문과 대조해 배송사진을 등록합니다. 맞는 사진이 아직 도착하지 않은 주문은 보류합니다.",
     flow: ["배송사진", "리본 검출", "OCR", "전체 후보 비교", "확정·보류", "사이트 등록", "결과 재확인", "Excel 보고"],
@@ -26,6 +28,7 @@ export const studies: CaseStudy[] = [
   },
   {
     slug: "fatima-pharmacy", title: "창원파티마병원 약제부", discipline: "Internal web app / Workflow digitization",
+    artDescription: "약제부의 Excel 재고조사가 공동 입력, 이중 확인, 변경 이력을 거치는 웹 업무로 이어지는 도해",
     period: "2026 · 10월 조사 운영 화면 기준",
     summary: "월간 재고조사를 모바일·PC 공동 입력으로 전환했습니다. 두 사람이 독립적으로 실사하고 차이가 난 품목을 다시 확인합니다.",
     flow: ["조사 생성", "선반·목록 입력", "독립 실사", "차이 확인", "변경 이력", "기존 Excel 양식"],
@@ -37,12 +40,14 @@ export const studies: CaseStudy[] = [
   },
   {
     slug: "nanogen", title: "Nanogen AI Agent", discipline: "Grounded AI / Research intelligence", period: "2026 · 연구용 프로토타입",
+    artDescription: "Nanogen 에이전트가 논문과 특허에서 인용 근거를 찾아 검증된 기록으로 연결하는 일러스트",
     summary: "논문·특허에서 추출한 수치와 원문 구절을 함께 저장합니다. 근거를 찾지 못한 값은 사실로 등록하는 단계에서 멈춥니다.",
     flow: ["검색", "추출", "원문 연결", "검증", "저장", "재사용"],
     chapters: [["한 값에서 원문까지", "추출값이 어느 구절에서 왔는지 추적할 수 있도록 원문 범위를 연결합니다. 사실, 해석, 가설, 미확인 정보를 구분합니다."], ["검증 단위", "오프라인 테스트 134개로 출처·인용·추출·분류·중복·매핑·실패 처리 등을 점검했습니다. 확보한 자료를 재사용합니다."]],
   },
   {
     slug: "dolboda", title: "돌보다", discipline: "Data pipeline / Web service", period: "2026 · 기획 총괄 및 전체 개발",
+    artDescription: "돌봄시설의 원자료가 비교 지표로 정리되어 이용자와 가족에게 전달되는 과정",
     image: "/images/dy-dolboda.jpg", url: "https://www.dolboda.kr/",
     summary: "수만 건의 시설 데이터를 돌봄 여건을 비교할 수 있는 지표로 바꿨습니다.",
     flow: ["공공데이터 수집", "정제", "정규화", "특성 추출", "지표 산출", "시설 비교"],
@@ -50,6 +55,7 @@ export const studies: CaseStudy[] = [
   },
   {
     slug: "four-season", title: "4season · stars", discipline: "Domain calculation / Boundary logic", period: "2026 · 웹서비스",
+    artDescription: "달력과 시계의 입력이 사계절의 절기 경계를 지나 구간별 결과로 바뀌는 도해",
     image: "/images/dy-stars.jpg", url: "https://4season-web1.vercel.app/stars",
     summary: "같은 날짜 안에서도 결과가 달라지는 경계를 연도별 실제 절기 시각으로 계산합니다.",
     flow: ["시각 입력", "절기 계산", "구간 구조화", "경계 판정", "근거 출력"],
@@ -57,6 +63,7 @@ export const studies: CaseStudy[] = [
   },
   {
     slug: "robotics", title: "Robotics & Autonomous Systems", discipline: "Robotics / Foundation", period: "2014–2017 · 2022",
+    artDescription: "이동 로봇과 드론이 센서로 주변을 측정하고 지도 위의 경로를 따라가는 일러스트",
     summary: "센서로 읽은 위치와 실제 움직임을 대조하며 제어를 개선했습니다. 연구실 이동 로봇에서 드론 자율비행까지 이어진 작업입니다.",
     flow: ["센싱", "위치 추정", "이동", "측정", "개선"],
     chapters: [["대학 연구실 · 2014–2015", "무인경비로봇에서 ROS·SLAM·Depth Camera를 사용해 장애물을 감지하고 모바일과 로봇을 연결했습니다."], ["KIST · 2016–2017", "Modular Gripper에서 센서로 파지 상태를 확인하고, Micro Push에서 모바일과 소형 로봇을 BLE로 연결했습니다. Spherical Robot에서는 전방향 이동과 SLAM을 실험했습니다."], ["OZO · 2022", "DJI Drone SDK와 SLAM을 활용한 자율비행 시스템을 개발했습니다. 추정 위치와 실제 동작이 어긋나는 구간을 찾아 수정했습니다."]],

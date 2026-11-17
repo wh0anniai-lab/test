@@ -32,7 +32,21 @@ body {font-size:18px;line-height:1.65;}
 .sequence i {font:300 .74em/1 Arial,sans-serif;color:var(--coral);vertical-align:.07em;}
 .cover-deck {font-size:clamp(17px,1.5vw,22px);line-height:1.5;letter-spacing:-.045em;margin-bottom:22px;}
 .portrait {width:min(100%,440px);justify-self:center;align-self:center;}
-.cover-aside {width:min(100%,440px);justify-self:center;}
+.cover-aside {width:min(100%,520px);justify-self:end;}
+.workspace-art, .classroom-art {display:block;width:100%;height:auto;border-radius:24px;border:1px solid var(--rule);}
+.workspace-art {border-top-left-radius:clamp(38px,6vw,88px);}
+.study-illustration img {display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover;object-position:center;}
+.study-illustration.full-art img {aspect-ratio:4/3;}
+.classroom-record {margin-top:10px;font-size:15px;color:var(--soft);}
+.classroom-record summary {padding:8px 0;}
+.service-capture {width:min(100%,840px);margin:24px 0 38px;}
+.service-capture figcaption {margin-bottom:10px;font-size:15px;color:var(--soft);}
+.service-capture img {display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--rule);}
+@media(max-width:680px){
+  .cover-aside {justify-self:center;width:100%;}
+  .workspace-art {border-radius:32px 18px 18px;}
+  .study-illustration img {aspect-ratio:4/3;}
+}
 .recent-work {margin-top:19px;border-top:1px solid var(--rule);padding-top:10px;display:grid;gap:2px;}
 .recent-work span {font-size:13px;color:var(--soft);}
 .recent-work a {font-size:16px;font-weight:550;color:var(--accent);min-height:26px;}
