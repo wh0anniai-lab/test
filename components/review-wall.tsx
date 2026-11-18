@@ -41,7 +41,7 @@ export function ReviewWall() {
     if (second) second.scrollLeft = second.scrollWidth - second.clientWidth;
   }, []);
   return <>
-    <div className="wrap wall-tools"><span>수강생 후기 · 12편</span>
+    <div className="wrap wall-tools"><span>수강생 후기 · 120여건</span>
       {!reduced && <button onClick={() => setPaused(!paused)}>{paused ? "움직임 재생 ▷" : "움직임 멈추기 Ⅱ"}</button>}
     </div>
     <div ref={wall} onMouseEnter={() => setReading(true)} onMouseLeave={() => setReading(false)}

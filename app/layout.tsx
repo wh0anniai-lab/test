@@ -30,11 +30,13 @@ export const metadata: Metadata = {
     siteName: SITE.title,
     title: SITE.title,
     description: SITE.description,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "김동영 픽셀 캐릭터와 AI 개발자·강사·사업 대표 소개" }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
