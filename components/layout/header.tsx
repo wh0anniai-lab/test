@@ -20,7 +20,7 @@ export function Header(){
   }}>
     <div className="wrap mast-inner"><Link className="wordmark" href="/" onClick={()=>setOpen(false)}>KIM DONGYOUNG</Link>
     <nav id="site-nav" aria-label="주요 메뉴" className={open?"expanded":""}>{items.map(([name,href])=><Link key={name} href={href} onClick={()=>setOpen(false)}>{name}</Link>)}</nav>
-    <a className="inquire" href={CONTACT.phoneHref}>전화</a>
+    <a className="inquire" href={CONTACT.phoneHref}>전화 <span aria-hidden="true">↗</span></a>
     <button ref={toggle} className="menu-toggle" aria-controls="site-nav" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?"닫기":"메뉴"}</button></div>
   </header>;
 }

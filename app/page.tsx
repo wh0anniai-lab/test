@@ -25,7 +25,7 @@ export default function Home() {
       </div>
     </section>
     <section id="work" className="wrap section selected">
-      <div className="section-heading"><div><span className="kicker">Projects / 2014–2026</span><h2>Selected work<span>.</span></h2></div><p>로봇 연구에서 현장 업무자동화까지.<br/>설계하고 운영하며 검증한 여섯 가지 작업입니다.</p></div>
+      <div className="section-heading"><div><span className="kicker">Projects / 2014–2026</span><h2>Selected work<span>.</span></h2></div><p>로봇 연구에서 현장 업무자동화까지.<br/>설계하고 운영하며 검증합니다.</p></div>
       <ProjectSlider/>
     </section>
     <Education/>
