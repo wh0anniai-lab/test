@@ -8,7 +8,7 @@ export function StudyArt({ study, detail = false }: { study: CaseStudy; detail?:
         src={`/images/illustrations/${study.slug}.webp`}
         alt={study.artDescription}
         width={1280}
-        height={960}
+        height={study.slug === "robotics" ? 960 : 720}
         sizes="(max-width: 680px) 90vw, (max-width: 1400px) 46vw, 640px"
       />
     </figure>
