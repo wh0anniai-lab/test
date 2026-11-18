@@ -16,7 +16,7 @@ export const SITE = {
 
 /** 기존 홈페이지에서 확인한 실제 연락처 값 */
 export const CONTACT = {
-  email: "dysoul20t@gmail.com",
+  email: "wh0anni.ai.1@gmail.com",
   /** 화면 표기용 */
   phoneDisplay: "010-7369-1351",
   /** tel: 링크용 (E.164) */
